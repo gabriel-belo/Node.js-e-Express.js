@@ -10,3 +10,7 @@ __filename -nome do arquivo
 require -função para usar modulos(CommonJS)
 module - informação sobre o módulo atual (arquivo)
 process -processo atual. Informação sobre env onde o programa esta sendo executado
+
+
+Module os ofere métodos e propriedades para interagir com sistemas operacionais como com o servidor
+O os é um modulo built in, ou seja, já esta introduzido no node

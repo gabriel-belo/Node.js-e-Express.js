@@ -1,15 +1,18 @@
-//modules- Código encapsulado
-const names= require("./4-names.js");
-const say = require("./5-utils.js");
-const data= require('./6-alternative-flavor')
+const os= require('os')
 
 
-console.log(data)
+//Informações sobre usuário atual
+const user= os.userInfo() 
+console.log(user)
 
-console.log(names)
-console.log(names.john)
-console.log(names.jane)
+//método que retorna o tempo de atividade do sistema em segundos
+console.log(os.uptime())
 
-say.sayHi('susan');
-say.sayHi(names.john);
-say.sayBy(names.jane);
+const currentOS= {
+    name: os.type(),
+    release: os.release(),
+    totalmem: os.totalmem(),
+    freemem: os.freemem(),
+}
+
+console.log(currentOS)
