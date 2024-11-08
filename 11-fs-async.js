@@ -1,9 +1,9 @@
 const { readFile, writeFile }= require('fs')
-
+console.log('start')
 
 //Lendo um arquivo
 readFile('./content/first.txt', 'utf-8', (err, result) => {
-    if(err){
+    if(err){ (parameter) err: NodeJS.ErrnoException
         console.log(err)
         return
     }
@@ -25,3 +25,6 @@ readFile('./content/first.txt', 'utf-8', (err, result) => {
         )
     })
 })
+
+console.log('done with this task')
+console.log('starting the next one')
