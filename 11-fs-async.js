@@ -3,7 +3,7 @@ console.log('start')
 
 //Lendo um arquivo
 readFile('./content/first.txt', 'utf-8', (err, result) => {
-    if(err){ (parameter) err: NodeJS.ErrnoException
+    if(err){
         console.log(err)
         return
     }
