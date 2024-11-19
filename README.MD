@@ -14,3 +14,11 @@ process -processo atual. Informação sobre env onde o programa esta sendo execu
 
 Module os ofere métodos e propriedades para interagir com sistemas operacionais como com o servidor
 O os é um modulo built in, ou seja, já esta introduzido no node
+
+
+NPM
+local dependency (Dependência local)= usado somente neste projeto em particular
+npm i <packageName>
+
+global dependency (Dependência global)= usado em todos os projetos
+npm install -g <packageName>

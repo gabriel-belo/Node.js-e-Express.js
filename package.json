@@ -1,0 +1,19 @@
+{
+  "name": "node.js-e-express",
+  "version": "1.0.0",
+  "description": "Node.js: é um ambiente para rodar JavaScript fora do Browser",
+  "main": "1-intro.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gabriel-belo/Node.js-e-Express.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "lodash": "^4.17.21"
+  }
+}
