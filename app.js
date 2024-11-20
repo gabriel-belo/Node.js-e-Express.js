@@ -1,7 +1,34 @@
-const _= require('lodash');
+// const { readFile }= require("fs")
 
-const items= [1, [2,[3,[4]]]]
+// console.log("started a first task")
 
-const newItems= _.flattenDeep(items);
-console.log(newItems); // [1, 2, 3, 4]
-console.log("Hello World") 
+// readFile('./content/first.txt', 'utf-8', (err, result) =>{
+//     if(err){
+//         console.log(err)
+//         return
+//     }
+
+//     console.log(result)
+//     console.log("completed first task")
+// })
+
+// console.log("starting next task")
+
+// console.log("first")
+
+// setTimeout(()=>{
+//     console.log("second")
+// },0)
+
+// console.log('third')
+
+
+const http= require('http')
+const server= http.createServer((req, res) => {
+    console.log("request event")
+    console.log("hello World")
+})
+
+server.listen(5000, () => {
+    console.log("server is listening on port 5000")
+})
