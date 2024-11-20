@@ -45,3 +45,44 @@ Estrutura e Significado
 
 O nodemon atualiza de forma instantanea sem fazer com que seja necessário chamar toda vez
 que temos uma mudança como quando usamos o node <NomeArquivo>
+
+O que são Promises no JavaScript?
+
+Uma Promise é um objeto no JavaScript que representa uma operação assíncrona que ainda não foi concluída, mas que eventualmente será resolvida ou rejeitada. É como uma promessa no mundo real: você promete fazer algo no futuro, e essa promessa pode ser cumprida (resolvida) ou falhar (rejeitada).
+Estados de uma Promise
+
+    Pending (pendente):
+        O estado inicial. A Promise ainda está em execução e não foi concluída.
+
+    Fulfilled (resolvida):
+        A operação foi concluída com sucesso e a Promise foi resolvida com um valor.
+
+    Rejected (rejeitada):
+        A operação falhou e a Promise foi rejeitada com um motivo (um erro ou uma mensagem de rejeição).
+
+    Settled (finalizada):
+        A Promise foi resolvida ou rejeitada e não pode mais mudar de estado.
+
+
+Consumindo uma Promise
+
+    then: Usado para lidar com o sucesso da Promise.
+    catch: Usado para lidar com erros ou rejeições.
+    finally: Executado independentemente do sucesso ou falha.
+
+    
+Função do await no JavaScript
+
+O await é uma palavra-chave que só pode ser usada em funções assíncronas (marcadas com async). Sua função principal é pausar a execução do código até que uma Promise seja resolvida ou rejeitada, permitindo trabalhar com operações assíncronas como se fossem síncronas.
+
+Características do await
+
+    Pausa a execução da função assíncrona:
+        Quando await encontra uma Promise, ele espera que ela seja resolvida antes de continuar.
+        Enquanto a função espera, outras partes do programa podem continuar executando.
+
+    Retorna o resultado da Promise resolvida:
+        Quando a Promise é resolvida com um valor (resolve), o await retorna esse valor.
+
+    Trata erros com simplicidade:
+        Se a Promise for rejeitada (reject), você pode capturar o erro com um bloco try/catch.
