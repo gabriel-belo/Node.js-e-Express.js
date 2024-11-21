@@ -86,3 +86,51 @@ Características do await
 
     Trata erros com simplicidade:
         Se a Promise for rejeitada (reject), você pode capturar o erro com um bloco try/catch.
+
+
+STREAMS
+As streams no Node.js são objetos usados para manipular dados de forma eficiente, em pedaços menores (chunks), em vez de carregar tudo na memória de uma vez. Isso as torna ideais para trabalhar com grandes quantidades de dados, como arquivos ou streams de rede.
+
+Principais tipos de Streams
+
+    Readable Streams:
+        Usadas para ler dados de uma fonte.
+        Exemplo: leitura de arquivos, recebimento de dados de uma API.
+
+    Writable Streams:
+        Usadas para escrever dados em um destino.
+        Exemplo: gravação em arquivos, envio de dados para uma API.
+
+    Duplex Streams:
+        Permitem ler e escrever dados (bidirecionalmente).
+        Exemplo: sockets.
+
+    Transform Streams:
+        Uma forma especial de duplex stream que transforma os dados enquanto eles passam por ela.
+        Exemplo: compactação, criptografia.
+
+
+Vantagens das Streams
+
+    Eficiência de Memória:
+        Em vez de carregar todo o conteúdo na memória, os dados são processados em pedaços menores.
+
+    Baixa Latência:
+        Dados podem ser processados conforme chegam, sem esperar que todo o conteúdo seja carregado.
+
+    Escalabilidade:
+        Adequado para trabalhar com arquivos grandes ou streams contínuas, como vídeos ou logs.
+
+        
+Eventos em Streams
+
+Streams são baseadas em eventos e implementam a interface EventEmitter. Os eventos mais comuns incluem:
+
+    data:
+        Emite um chunk de dados quando está disponível.
+    end:
+        Indica que não há mais dados para serem lidos.
+    error:
+        Emite um erro caso ocorra algum problema.
+    finish:
+        Em Writable Streams, indica que todos os dados foram gravados.

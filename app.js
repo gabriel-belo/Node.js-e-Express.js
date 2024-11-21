@@ -1,16 +1,14 @@
-const http= require('http')
-const EventEmitter= require('events')
+// //O createrReadStream é usado para ler arquivos de forma eficiente em partes (chunks) 
+// const { createReadStream}= require('fs')
 
-// const server= http.createServer((req, res)=>{
-//     res.end("Welcome")
+// const stream= createReadStream('./content/big.txt', {
+//     highWaterMark: 9000,
+//     enconding: 'utf8',
 // })
 
-//Usando a API Event Emitter
-const server= http.createServer()
-//emits request event
-//subscribe to it/ listen to it/ respond it
-server.on('request', (req, res) =>{
-    res.end("Welcome")
-})
+// stream.on('data', (result) => {
+//     console.log(result)
+// })
 
-server.listen(5000)
+// stream.on('error', (err) => console.log(err ))
+
