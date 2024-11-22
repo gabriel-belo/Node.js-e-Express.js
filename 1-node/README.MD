@@ -121,7 +121,7 @@ Vantagens das Streams
     Escalabilidade:
         Adequado para trabalhar com arquivos grandes ou streams contínuas, como vídeos ou logs.
 
-        
+
 Eventos em Streams
 
 Streams são baseadas em eventos e implementam a interface EventEmitter. Os eventos mais comuns incluem:
@@ -134,3 +134,17 @@ Streams são baseadas em eventos e implementam a interface EventEmitter. Os even
         Emite um erro caso ocorra algum problema.
     finish:
         Em Writable Streams, indica que todos os dados foram gravados.
+
+
+
+Como fazer a troca de dados na web
+http message >--requisição--> node/express
+|                  DADOS                  |
+<----------------Resposta-----------------<
+
+
+http methods
+-GET: Lê dados, pegar dados 
+-POST: Insere dados
+-PUT: Atualiza dados
+-DELETE: Deleta dados
