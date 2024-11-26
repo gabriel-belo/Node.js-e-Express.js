@@ -227,3 +227,22 @@ O método use() no Express é usado para registrar middlewares em uma aplicaçã
 
     Manipulação de requisições e respostas.
     Execução de lógica personalizada antes de passar o controle para o próximo middleware ou rota.
+
+
+API vs SSR
+
+API:
+-API - JSON
+-SEND DATA
+-RES.JSON()
+
+SSR:
+-SSR - Template
+-SEND Template
+-RES.RENDER()
+
+Em express ou em http quando falamos sobre api estamos falando sobre configurar uma interface http para interagir com os dados 
+Os dados são enviados usando json, para enviar a resposta usaremos res.json()
+A ideia principal com apis é que o servidor provem dados e isso significa que qualquer aplicativo front-end que deseja acessar esses dados pode simplismente usar uma requisição http r
+
+SSR(service side randering) configuraremos modelos e enviaremos de volta o HTML, CSS e JavaScript inteiro, e faremos isso usando o método res.render
