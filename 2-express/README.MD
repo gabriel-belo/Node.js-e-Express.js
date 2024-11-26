@@ -246,3 +246,34 @@ Os dados são enviados usando json, para enviar a resposta usaremos res.json()
 A ideia principal com apis é que o servidor provem dados e isso significa que qualquer aplicativo front-end que deseja acessar esses dados pode simplismente usar uma requisição http r
 
 SSR(service side randering) configuraremos modelos e enviaremos de volta o HTML, CSS e JavaScript inteiro, e faremos isso usando o método res.render
+
+
+Adicionar /:id na URL (como em /user/:id) é uma forma de definir parâmetros de rota em frameworks ou bibliotecas de roteamento, como o React Router, Express.js, ou outras ferramentas de desenvolvimento web. Esses parâmetros permitem que partes da URL sejam dinâmicas e possam receber valores variáveis.
+Funcionalidade de /:id
+
+    Define um Segmento Dinâmico na URL O :id funciona como um "placeholder" para valores que serão passados na URL. Por exemplo:
+        Se a rota é definida como /user/:id, você pode acessar URLs como /user/123, /user/abc, etc.
+
+    Captura o Valor do Parâmetro O valor correspondente ao :id pode ser capturado no backend (como no Express.js) ou no frontend (como no React Router) para usá-lo em lógica de negócio, consultas a banco de dados, exibição de dados dinâmicos, etc.
+
+    Após uma ? como nesta estrutura http://hn.algolia.com/api/v1/search?query=foo&tags=story
+    A ? e o conteúdo que vem após ela formam a query string, que é usada para enviar dados ou parâmetros ao servidor em uma requisição HTTP.
+
+    Componentes da Query String
+
+    A Interrogação (?)
+        Indica o início da query string. Tudo que vem depois dela são os parâmetros que o cliente está enviando para o servidor.
+
+    Parâmetros (Key-Value Pairs)
+        Os parâmetros são fornecidos no formato chave=valor e separados por &.
+        No exemplo:
+            query=foo: Define o valor foo para a chave query.
+            tags=story: Define o valor story para a chave tags.
+
+    Separador (&)
+        Separa múltiplos parâmetros dentro da query string. No exemplo, query=foo e tags=story estão separados pelo &.
+
+    Exemplo: Pesquisa de Palavras http://example.com/search?term=javascript&limit=10
+    Busca por "javascript" e limita os resultados a 10.
+
+    Resumo: A query string é uma forma de passar parâmetros para o servidor em uma URL. No exemplo fornecido, ela define critérios para buscar conteúdos relacionados ao termo foo que possuem a tag story. É amplamente usada em APIs, sistemas de busca, e filtros dinâmicos.
