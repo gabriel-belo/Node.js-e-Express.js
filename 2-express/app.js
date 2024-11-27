@@ -1,57 +1,43 @@
 const express= require('express')
 const app= express()
-const {products, } = require('./data.js')
+const logger= require('./logger')
+const authorize= require('./authorize')
 
-app.get("/", (req, res)=>{
-    //Envia uma resposta em JSON(com o content-type correto) este é o parametro convertido para 
-    // uma string JSON 
-    // res.json(products)
+// req => middleware => res
+// req => middleware => res => next middleware => res
+//O express envia o req, res e next por trás das cortinas neste caso para o logger
+//Sempre que usar um middleware é necessário passar para o próximo, ou seja, usar 
+// next(), só não deve ser usado caso esteja terminando o ciclo que então deve ser usado
+//res.end()
 
-    res.send(`<h1>Home Page</h1><a href='/api/products'>products</a>`)
+
+//Para não precisar adicionar o logger em todos os métodos usamos app.use(logger) para que 
+// adicione diretamente a todos
+//Se a rota estiver antes do app.use()  o método não receberá o middleware
+//Podemos adicionar um caminho no método use() e as rotas que estão dentro deste caminho 
+//Recebem o middleware do método
+app.use([logger, authorize])
+
+
+// app.get('/', logger,(req, res)=>{
+//     res.send("Home")
+// })
+
+app.get('/',(req, res)=>{
+    res.send("Home")
+})
+app.get('/about', (req, res)=>{
+    res.send("About")
 })
 
-app.get('/api/products', (req, res) =>{
-    //selecionando alguns elementos dos objetos
-    const newProduct= products.map((product)=>{
-        const {id, name, image}= product
-        return {id, name, image}
-    })
-    res.json(newProduct)
+app.get('/api/products', (req, res)=>{
+    res.send("Products")
 })
 
-
-
-//Criando rotas para cada elemento do objeto e buscando através do url adicionado na página
-app.get('/api/products/:productID', (req, res) =>{
-    // console.log(req)
-    // console.log(req.params)
-    const {productID}= req.params
-    const singleProduct= products.find((product) => product.id === Number(productID))
-    if (!singleProduct){
-        return res.status(404).send('<h1>Product not found</h1>')
-    }
-    return res.json(singleProduct)
+app.get('/api/items', (req, res)=>{
+    console.log(req.user)
+    res.send("Items")
 })
-
-app.get('/api/v1/query', (req, res) =>{
-    // console.log(req.query)
-
-    const {search, limit}=req.query
-    let sortedProducts= [...products]
-    if(search){
-        sortedProducts= sortedProducts.filter((product)=>{
-            return product.name.startsWith(search)
-        })
-    }
-    if(limit){
-        sortedProducts= sortedProducts.slice(0, Number(limit))
-    } 
-    if (sortedProducts.length === 0){
-        return res.status(200).json({succes: true, data: []}) 
-    }
-    res.status(200).json(sortedProducts)
-    // res.end('hello world');
-})
-app.listen(5000, () =>{
-    console.log('server is running on port 5000')
-})
+app.listen(5000, 
+    console.log("Server is listening on port 5000...")
+)
