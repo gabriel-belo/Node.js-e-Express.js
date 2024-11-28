@@ -1110,6 +1110,7 @@ Comportamento:
 
 
 O método .use() do Express.js é utilizado para montar middlewares em uma aplicação. Um middleware no Express é uma função que pode manipular requisições e respostas, executar código, modificar objetos de requisição (req) e resposta (res), encerrar o ciclo de requisição/resposta ou passar o controle para o próximo middleware.
+O método use() apenas aplica o middleware a todas as nossas rotas
 Sintaxe
 
 app.use([path], callback)
@@ -1192,3 +1193,51 @@ app.use('/admin', adminRouter);
 O .use() pode ser usado para configurar o middleware express.static e servir arquivos estáticos.
 Com isso, arquivos na pasta public (como HTML, CSS ou JS) serão servidos automaticamente.
 app.use(express.static('public'));
+
+A linha de código:
+
+app.use(express.urlencoded({ extended: false }))
+
+é usada no Express.js para configurar um middleware que processa dados enviados via formulários HTML (codificados como application/x-www-form-urlencoded). Esse middleware faz parte do próprio Express e é útil para acessar os dados enviados em requisições POST, PUT, ou PATCH no corpo da requisição.
+Que Problema Essa Linha Resolve?
+
+Quando um cliente envia dados de formulário em uma requisição HTTP (geralmente com o método POST), os dados são transmitidos no corpo da requisição de forma codificada. O middleware express.urlencoded faz o seguinte:
+
+    Analisa os dados no formato application/x-www-form-urlencoded.
+    Converte os dados para um objeto JavaScript acessível através de req.body.
+
+Sem este middleware, o corpo da requisição (req.body) seria undefined.
+Significado dos Parâmetros
+1. extended: false
+
+O parâmetro extended define como os dados do corpo serão analisados:
+
+    extended: false:
+        Utiliza a biblioteca querystring para analisar os dados.
+        Permite apenas objetos simples, com valores como strings ou arrays.
+        Exemplo:
+
+nome=Joao&idade=30
+
+Resulta em:
+
+    { nome: 'Joao', idade: '30' }
+
+extended: true:
+
+    Utiliza a biblioteca qs (mais avançada).
+    Permite objetos aninhados e tipos complexos.
+    Exemplo:
+
+usuario[nome]=Joao&usuario[idade]=30
+
+Resulta em:
+
+        { usuario: { nome: 'Joao', idade: '30' } }
+
+Por que escolher extended: false ou true?
+
+    Use false quando não precisar de dados complexos.
+    Use true se espera receber objetos aninhados ou estruturas de dados mais detalhadas.
+
+O postman pode ser usado para verificar o funcionanemto do código sem precisar criar um front-end para ver o resultado

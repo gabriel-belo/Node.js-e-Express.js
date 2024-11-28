@@ -1,40 +1,44 @@
 const express= require('express')
 const app= express()
-const morgan= require('morgan')
-const logger= require('./logger')
-const authorize= require('./authorize')
+const { people }= require('./data')
 
+//ativos staticos
+app.use(express.static('./methods-public'))
 
-//1. use vs route
-//2. opções- nosso / express / de terceiros
-//Nosso- criado por mim
-//Express- O express tem alguns  middleware contruídos
-//Um exemplo é o express.static() 
-//de terceiros- criado por outras pessoas
-//morgan('tiny') provem os métodos mais básicos
-app.use(morgan('tiny'))
-app.use([logger, authorize])
+//analisar dados do formulário
+app.use(express.urlencoded({extended: false}))
 
+//analisar json
+app.use(express.json())
 
-// app.get('/', logger,(req, res)=>{
-//     res.send("Home")
-// })
-
-app.get('/',(req, res)=>{
-    res.send("Home")
-})
-app.get('/about', (req, res)=>{
-    res.send("About")
+app.get('/api/people', (req, res)=>{
+    res.status(200).json({success: true, data: people})
 })
 
-app.get('/api/products', (req, res)=>{
-    res.send("Products")
+app.post('/api/postman/people', (req, res) =>{
+    const{name}= req.body
+    if(!name){
+        return res
+        .status(400)
+        .json({success: false, msg: "please provide name value"})
+    }
+    res.status(201).json({success: true, data: [...people, name]})
+})
+app.post('/api/people', (req, res)=>{
+    const {name}= req.body
+    if(!name){
+        return res.status(400).json({success: false, msg: 'please provide name value'})
+    }
+    res.status(201).json({success: true, person: name}) 
+})
+app.post('/login', (req, res)=>{
+    const {name}= req.body
+    if(name){
+        return res.status(200).send(`Welcome ${name}`)
+    }
+    res.status(200).send('Please Provide Credentials') 
 })
 
-app.get('/api/items', (req, res)=>{
-    console.log(req.user)
-    res.send("Items")
-})
 app.listen(5000, 
     console.log("Server is listening on port 5000...")
-)
+) 
