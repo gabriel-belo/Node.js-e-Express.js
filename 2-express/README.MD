@@ -1241,3 +1241,6 @@ Por que escolher extended: false ou true?
     Use true se espera receber objetos aninhados ou estruturas de dados mais detalhadas.
 
 O postman pode ser usado para verificar o funcionanemto do código sem precisar criar um front-end para ver o resultado
+
+
+quando estamos usando o método delete não esperamos na no corpo (body)
