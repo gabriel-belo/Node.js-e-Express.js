@@ -1,7 +1,9 @@
 const http= require('http')
 
+//res.write() para mandar dados aos poucos, e depois encerrar com res.end()
 const server= http.createServer((req, res) => {
     if(req.url === "/"){
+        //Finaliza a resposta HTTP
         res.end('Welcome to our home page')
     }
     if(req.url === '/about'){

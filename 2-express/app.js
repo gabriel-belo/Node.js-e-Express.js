@@ -14,7 +14,7 @@ app.use(express.json())
 
 app.use('/api/people', people )
 
-app.use('/login', auth)
+app.use('/login', auth) 
 
 
 app.listen(5000, 

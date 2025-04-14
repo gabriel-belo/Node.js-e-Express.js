@@ -1,17 +1,28 @@
-const {readFileSync, writeFileSync}= require('fs')
-console.log('start')
+//O módulo fs (de File System) permite ler, escrever, deletar, renomear, copiar arquivos e 
+//pastas no disco
 
-//Lendo dois arquivos
-const firstFile= readFileSync('./content/first.txt', 'utf-8')
-const secondFile= readFileSync('./content/second.txt', 'utf-8')
+//formas diferentes de acessar os métodos
+//1. Mais útli quando vai utilizar poucos métodos
+const {readFileSync, writeFileSync} = require('fs')
 
-console.log(firstFile, secondFile)
+//2.util quando vários métodos do módulo forem aplicados
+//const fs= require('fs')
+//fs.read
 
-//Criando um arquivo e colocando conteúdo nele
-writeFileSync('./content/result-sync.txt',
-    `Here is the result: ${firstFile}, ${secondFile}`,
-    {flag: "a"}    //Reescrevendo
+const first= readFileSync('./content/first.txt', 'utf8')
+const second= readFileSync('./content/second.txt', 'utf8')
+console.log(first, second)
+
+writeFileSync('./content/result-sync.txt', 
+    `Here is the result : ${first}, ${second}`,
+    {flag: 'a'} //você acrescenta (anexa) ao conteúdo existente
+
 )
+
+const terceiro= readFileSync('./content/result-sync.txt', 'utf8')
+
+console.log(terceiro)
+
 
 console.log('done with this task')
 console.log('starting the next one')
